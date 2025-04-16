@@ -7,10 +7,10 @@ export class Webapp extends cdk.Stack {
     super(scope, id, props); 
     
     const s3Bucket = new cdk.aws_s3.Bucket(this, "s3-bucket-content", {
-        blockPublicAccess: cdk.aws_s3.BlockPublicAccess.BLOCK_ALL,
-        encryption: cdk.aws_s3.BucketEncryption.S3_MANAGED,
-        enforceSSL: true,
-        removalPolicy: cdk.RemovalPolicy.RETAIN,
+      blockPublicAccess: cdk.aws_s3.BlockPublicAccess.BLOCK_ALL,
+      encryption: cdk.aws_s3.BucketEncryption.S3_MANAGED,
+      enforceSSL: true,
+      removalPolicy: cdk.RemovalPolicy.RETAIN,
     });
 
     const originAccessIdentity = new cdk.aws_cloudfront.OriginAccessIdentity(
