@@ -19,10 +19,9 @@ export class Webapp extends cdk.Stack {
       assumedBy: new cdk.aws_iam.WebIdentityPrincipal(
         provider.openIdConnectProviderArn,
         {
-          StringEquals: {
-            "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
+          StringLike: {
             "token.actions.githubusercontent.com:sub":
-              "repo:trymtv/mobelrest:ref:refs/heads/master",
+              "repo:trymtv/mobelrest:*",
           },
         }
       ),
