@@ -17,7 +17,7 @@ export class Webapp extends cdk.Stack {
     const githubActionsRole = new cdk.aws_iam.Role(this, "GithubActionsRole", {
       roleName: "github-actions-s3-deploy",
       assumedBy: new cdk.aws_iam.WebIdentityPrincipal(
-        "arn:aws:iam::trymtv:oidc-provider/token.actions.githubusercontent.com",
+        provider.openIdConnectProviderArn,
         {
           StringEquals: {
             "token.actions.githubusercontent.com:sub":
