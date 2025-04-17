@@ -25,4 +25,4 @@ jobs:
       uses: aws-actions/configure-aws-credentials@v3
       with:
         aws-region: eu-north-1
-        role-to_assume: arn:aws:iam::968382676337:role/github-actions-s3-deploy
+        role-to-assume: arn:aws:iam::968382676337:role/github-actions-s3-deploy
