@@ -26,3 +26,16 @@ jobs:
       with:
         aws-region: eu-north-1
         role-to-assume: arn:aws:iam::968382676337:role/github-actions-s3-deploy
+    
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 18
+    
+    - name: Build
+      run:  |
+        npm ci
+        npm build
+    
+    - name: Deploy
+      run: |
+        aws s3 sync ./build/client s3://website-stack-s3bucketcontent4a570435-xethiwm0rlzo --recursive
