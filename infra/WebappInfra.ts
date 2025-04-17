@@ -20,6 +20,7 @@ export class Webapp extends cdk.Stack {
         provider.openIdConnectProviderArn,
         {
           StringEquals: {
+            "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
             "token.actions.githubusercontent.com:sub":
               "repo:trymtv/mobelrest:ref:refs/heads/master",
           },
