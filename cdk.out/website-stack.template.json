@@ -1,5 +1,114 @@
 {
  "Resources": {
+  "GithubActionsRoleF5CC769F": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRoleWithWebIdentity",
+       "Condition": {
+        "StringEquals": {
+         "token.actions.githubusercontent.com:sub": "repo:trymtv/mobelrest:ref:refs/heads/master"
+        }
+       },
+       "Effect": "Allow",
+       "Principal": {
+        "Federated": "arn:aws:iam::trymtv:oidc-provider/token.actions.githubusercontent.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Description": "Role assumed by GitHub Actions",
+    "RoleName": "github-actions-s3-deploy"
+   },
+   "Metadata": {
+    "aws:cdk:path": "website-stack/GithubActionsRole/Resource"
+   }
+  },
+  "GithubActionsRoleDefaultPolicy490FA883": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "cloudformation:DescribeStacks",
+        "cloudformation:DescribeStackResources",
+        "cloudformation:DescribeStackEvents",
+        "cloudformation:GetTemplate",
+        "cloudformation:GetTemplateSummary"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:aws:cloudformation:",
+          {
+           "Ref": "AWS::Region"
+          },
+          ":",
+          {
+           "Ref": "AWS::AccountId"
+          },
+          ":stack/website-stack/*"
+         ]
+        ]
+       }
+      },
+      {
+       "Action": [
+        "s3:GetObject*",
+        "s3:GetBucket*",
+        "s3:List*",
+        "s3:DeleteObject*",
+        "s3:PutObject",
+        "s3:PutObjectLegalHold",
+        "s3:PutObjectRetention",
+        "s3:PutObjectTagging",
+        "s3:PutObjectVersionTagging",
+        "s3:Abort*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "s3bucketcontent4A570435",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "s3bucketcontent4A570435",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "GithubActionsRoleDefaultPolicy490FA883",
+    "Roles": [
+     {
+      "Ref": "GithubActionsRoleF5CC769F"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "website-stack/GithubActionsRole/DefaultPolicy/Resource"
+   }
+  },
   "s3bucketcontent4A570435": {
    "Type": "AWS::S3::Bucket",
    "Properties": {
@@ -198,7 +307,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/22LwQ6CMBBEv4V7WQEveFQMiSeNfoCBtpgFbJPuVmKa/rtBTPTgaeZN3hSQlxvIk2aiVKohHbGFcOFGDqKZ6BpoDWHn5aBZVJ35tCVOdkT5/M4LRyFH61XnrGEIR4c3NFspNdFBacPI70c1O/Xs/DX2SOyw9YzWzPovxxiFsUpDT6tHkUFeQpb0hJg6bxjvGs5LvgB58CID2wAAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/22LQQ6CMBBFz+K+jIAbXCrGxJUGD2CgFDNQ2qTTSkzTu5uCiSxcvf8mb3LIij1km3qihLdDIrEBf7c1H1glSDvDBasnenisR/CVloKVnZp50xL5O+qyAqMd+KPjg7Dx+l0LfvHaA+NSu7YzWlnwV4NPVAfOBdGlFcqinT/K2Jxj87c4IVmDjbOoVczXHkJgSrcCetq+8hSyAtJNT4iJccriKKBa+AF6bI82CAEAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "website-stack/CDKMetadata/Default"

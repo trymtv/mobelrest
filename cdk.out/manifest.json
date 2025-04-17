@@ -18,7 +18,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/3c11e0f70bcc535c470fd92873d35ae137debeff7529f2a9e8ff6b7ec95943e9.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/5149258ac5678f1bed8da6506e9b1aa17af3f9b72b572589fe42ac6347208892.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -34,6 +34,18 @@
         "website-stack.assets"
       ],
       "metadata": {
+        "/website-stack/GithubActionsRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GithubActionsRoleF5CC769F"
+          }
+        ],
+        "/website-stack/GithubActionsRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "GithubActionsRoleDefaultPolicy490FA883"
+          }
+        ],
         "/website-stack/s3-bucket-content/Resource": [
           {
             "type": "aws:cdk:logicalId",
