@@ -94,6 +94,29 @@
          ]
         }
        ]
+      },
+      {
+       "Action": "cloudfront:CreateInvalidation",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:",
+          {
+           "Ref": "AWS::Partition"
+          },
+          ":cloudfront::",
+          {
+           "Ref": "AWS::AccountId"
+          },
+          ":distribution/",
+          {
+           "Ref": "cloudfrontcontentdistribution5BFB9597"
+          }
+         ]
+        ]
+       }
       }
      ],
      "Version": "2012-10-17"

@@ -76,6 +76,8 @@ export class Webapp extends cdk.Stack {
         priceClass: cdk.aws_cloudfront.PriceClass.PRICE_CLASS_100,
       }
     );
+
+    distribution.grantCreateInvalidation(githubActionsRole);
   }
 }
 
