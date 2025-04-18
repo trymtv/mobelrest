@@ -6,10 +6,10 @@ import Content from './Content'
 
 export default function index() {
   return (
-    <div className={"flex flex-col h-screen"}>
-    <Header/>
-    <Content/>
-    <Footer/>
+    <div className={"flex flex-col min-h-screen"}>
+      <Header />
+      <Content />
+      <Footer />
     </div>
-  )
+  );
 }
