@@ -145,10 +145,14 @@
      ]
     },
     "PublicAccessBlockConfiguration": {
-     "BlockPublicAcls": true,
-     "BlockPublicPolicy": true,
-     "IgnorePublicAcls": true,
-     "RestrictPublicBuckets": true
+     "BlockPublicAcls": false,
+     "BlockPublicPolicy": false,
+     "IgnorePublicAcls": false,
+     "RestrictPublicBuckets": false
+    },
+    "WebsiteConfiguration": {
+     "ErrorDocument": "index.html",
+     "IndexDocument": "index.html"
     }
    },
    "UpdateReplacePolicy": "Retain",
@@ -200,53 +204,10 @@
        ]
       },
       {
-       "Action": [
-        "s3:GetObject*",
-        "s3:GetBucket*",
-        "s3:List*"
-       ],
-       "Effect": "Allow",
-       "Principal": {
-        "CanonicalUser": {
-         "Fn::GetAtt": [
-          "cloudfrontoriginaccessidentity1059B454",
-          "S3CanonicalUserId"
-         ]
-        }
-       },
-       "Resource": [
-        {
-         "Fn::GetAtt": [
-          "s3bucketcontent4A570435",
-          "Arn"
-         ]
-        },
-        {
-         "Fn::Join": [
-          "",
-          [
-           {
-            "Fn::GetAtt": [
-             "s3bucketcontent4A570435",
-             "Arn"
-            ]
-           },
-           "/*"
-          ]
-         ]
-        }
-       ]
-      },
-      {
        "Action": "s3:GetObject",
        "Effect": "Allow",
        "Principal": {
-        "CanonicalUser": {
-         "Fn::GetAtt": [
-          "cloudfrontoriginaccessidentity1059B454",
-          "S3CanonicalUserId"
-         ]
-        }
+        "AWS": "*"
        },
        "Resource": {
         "Fn::Join": [
@@ -271,17 +232,6 @@
     "aws:cdk:path": "website-stack/s3-bucket-content/Policy/Resource"
    }
   },
-  "cloudfrontoriginaccessidentity1059B454": {
-   "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
-   "Properties": {
-    "CloudFrontOriginAccessIdentityConfig": {
-     "Comment": "Allows CloudFront to reach the bucket"
-    }
-   },
-   "Metadata": {
-    "aws:cdk:path": "website-stack/cloudfront-origin-access-identity/Resource"
-   }
-  },
   "cloudfrontcontentdistribution5BFB9597": {
    "Type": "AWS::CloudFront::Distribution",
    "Properties": {
@@ -298,26 +248,29 @@
      "IPV6Enabled": true,
      "Origins": [
       {
-       "DomainName": {
-        "Fn::GetAtt": [
-         "s3bucketcontent4A570435",
-         "RegionalDomainName"
+       "CustomOriginConfig": {
+        "OriginProtocolPolicy": "http-only",
+        "OriginSSLProtocols": [
+         "TLSv1.2"
         ]
        },
-       "Id": "websitestackcloudfrontcontentdistributionOrigin1530C74DD",
-       "S3OriginConfig": {
-        "OriginAccessIdentity": {
-         "Fn::Join": [
-          "",
-          [
-           "origin-access-identity/cloudfront/",
+       "DomainName": {
+        "Fn::Select": [
+         2,
+         {
+          "Fn::Split": [
+           "/",
            {
-            "Ref": "cloudfrontoriginaccessidentity1059B454"
+            "Fn::GetAtt": [
+             "s3bucketcontent4A570435",
+             "WebsiteURL"
+            ]
            }
           ]
-         ]
-        }
-       }
+         }
+        ]
+       },
+       "Id": "websitestackcloudfrontcontentdistributionOrigin1530C74DD"
       }
      ],
      "PriceClass": "PriceClass_100"
@@ -330,7 +283,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/22LQQ6CMBBFz+K+jIAbXCrGxJUGD2CgFDNQ2qTTSkzTu5uCiSxcvf8mb3LIij1km3qihLdDIrEBf7c1H1glSDvDBasnenisR/CVloKVnZp50xL5O+qyAqMd+KPjg7Dx+l0LfvHaA+NSu7YzWlnwV4NPVAfOBdGlFcqinT/K2Jxj87c4IVmDjbOoVczXHkJgSrcCetq+8hSyAtJNT4iJccriKKBa+AF6bI82CAEAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02KQQ6CMBBFz8K+jIAb3KoHMOUAppSSDJRO0mklpundDWIiq/fez2+gbi9QF2rlUg9zabGH1AWlZyENU/TaCLXyM6FaIEmyRtxG9+WDLOr3lrtlwWdI16hnE7b1Zzv+52NnoS3FYfTkAqQ7cvDYx4Dktuexc87C0WBg4tOrqaBuoSomRix9dAEXA3LnB/oXTZDRAAAA"
    },
    "Metadata": {
     "aws:cdk:path": "website-stack/CDKMetadata/Default"
