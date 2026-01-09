@@ -5,18 +5,22 @@ import { mainRoutes } from "~/routes";
 
 export default function Header() {
   return (
-    <div
-      className={
-        "w-full flex justify-center grow-0 border-b-dbrown border-b-4 bg-lbrown"
-      }
-    >
-      <div className={"h-24 w-1/2 flex justify-between items-center"}>
-        <NavLink to={"/"}>
-          <div className={"h-22 w-44 border-2"}> LOGO</div>
-        </NavLink>
-        <NavLinks />
-      </div>
-    </div>
+      <header
+          className={
+            "w-full flex justify-center grow-0 border-b border-brand-200 bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm"
+          }
+      >
+        <div className={"h-20 w-full max-w-6xl px-6 flex justify-between items-center"}>
+          <NavLink to={"/"}>
+            <div className={"font-bold text-2xl tracking-tight text-brand-800"}>
+              MOBEL<span className="text-brand-500">REST</span>
+            </div>
+          </NavLink>
+          <nav className="flex gap-8">
+            <NavLinks />
+          </nav>
+        </div>
+      </header>
   );
 }
 
@@ -32,15 +36,16 @@ type LinkButtonProps = {
 } & NavLinkProps;
 
 function MainLinkButton({ to, text }: LinkButtonProps) {
-  const className = "h-fit";
   return (
-    <NavLink
-      to={to}
-      className={({ isActive }) => {
-        return className + (isActive ? " border-b-2" : "");
-      }}
-    >
-      <div className={"text-xl"}>{text}</div>
-    </NavLink>
+      <NavLink
+          to={to}
+          className={({ isActive }) => {
+            return `text-sm font-medium transition-colors hover:text-brand-600 ${
+                isActive ? "text-brand-800 border-b-2 border-brand-800" : "text-brand-500"
+            }`;
+          }}
+      >
+        {text}
+      </NavLink>
   );
 }
