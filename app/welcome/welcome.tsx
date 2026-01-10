@@ -35,14 +35,14 @@ function ImageSlideshow() {
 export function Welcome() {
   return (
       <main className="container mx-auto px-4 py-12">
-        <div className="flex flex-col md:flex-row gap-12 items-center">
+        <div className="flex flex-col md:flex-row gap-12 items-center lg:justify-center">
           {/* Left Column: Slideshow */}
           <div className="w-full md:w-1/2">
             <ImageSlideshow />
           </div>
 
           {/* Right Column: Text Content */}
-          <div className="w-full md:w-1/2">
+          <div className="w-full md:w-1/2 lg:max-w-md">
             <h1 className="text-3xl font-serif font-bold mb-4 text-stone-800">
               Restaurering av møbler
             </h1>
