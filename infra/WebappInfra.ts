@@ -82,7 +82,7 @@ export class Webapp extends cdk.Stack {
             "cloudfront-content-distribution",
             {
                 certificate: certificate,
-                domainNames: [hostedZone.domainName],
+                domainNames: [domainName],
                 defaultBehavior: {
                     origin: cloudfrontS3Origin,
                     viewerProtocolPolicy: cdk.aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
@@ -94,7 +94,7 @@ export class Webapp extends cdk.Stack {
 
         new cdk.aws_route53.ARecord(this, 'CloudFrontAliasRecord', {
             zone: hostedZone,
-            recordName: hostedZone.domainName,
+            recordName: domainName,
             target: cdk.aws_route53.RecordTarget.fromAlias(
                 new cdk.aws_route53_targets.CloudFrontTarget(distribution)
             ),
