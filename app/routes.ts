@@ -6,7 +6,7 @@ import {
 } from "@react-router/dev/routes";
 
 export const mainRoutes = [
-  route("om-verkstedet", "routes/home.tsx", { id: "Om verkstedet" }),
+  route("om-meg", "routes/home.tsx", { id: "Om meg" }),
   route("tjenester", "routes/home.tsx", { id: "Tjenester" }),
   route("bildegalleri", "routes/home.tsx", { id: "Bildegalleri" }),
   route("kontakt", "routes/home.tsx", { id: "Kontakt" }),
