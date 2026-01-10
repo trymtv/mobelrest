@@ -236,11 +236,12 @@
    "Type": "AWS::CloudFront::Distribution",
    "Properties": {
     "DistributionConfig": {
+     "Aliases": [],
      "DefaultCacheBehavior": {
       "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
       "Compress": true,
       "TargetOriginId": "websitestackcloudfrontcontentdistributionOrigin1530C74DD",
-      "ViewerProtocolPolicy": "allow-all"
+      "ViewerProtocolPolicy": "redirect-to-https"
      },
      "DefaultRootObject": "index.html",
      "Enabled": true,
@@ -273,22 +274,65 @@
        "Id": "websitestackcloudfrontcontentdistributionOrigin1530C74DD"
       }
      ],
-     "PriceClass": "PriceClass_100"
+     "PriceClass": "PriceClass_100",
+     "ViewerCertificate": {
+      "AcmCertificateArn": "arn:aws:acm:us-east-1:968382676337:certificate/d5917e7e-6f54-4ed1-afd0-f839e1d5fc97",
+      "MinimumProtocolVersion": "TLSv1.2_2021",
+      "SslSupportMethod": "sni-only"
+     }
     }
    },
    "Metadata": {
     "aws:cdk:path": "website-stack/cloudfront-content-distribution/Resource"
    }
   },
+  "CloudFrontAliasRecord94C98D73": {
+   "Type": "AWS::Route53::RecordSet",
+   "Properties": {
+    "AliasTarget": {
+     "DNSName": {
+      "Fn::GetAtt": [
+       "cloudfrontcontentdistribution5BFB9597",
+       "DomainName"
+      ]
+     },
+     "HostedZoneId": {
+      "Fn::FindInMap": [
+       "AWSCloudFrontPartitionHostedZoneIdMap",
+       {
+        "Ref": "AWS::Partition"
+       },
+       "zoneId"
+      ]
+     }
+    },
+    "HostedZoneId": "Z0272258YY8F77CIZQX7",
+    "Name": "mobelrest.no.",
+    "Type": "A"
+   },
+   "Metadata": {
+    "aws:cdk:path": "website-stack/CloudFrontAliasRecord/Resource"
+   }
+  },
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02KQQ6CMBBFz8K+jIAb3KoHMOUAppSSDJRO0mklpundDWIiq/fez2+gbi9QF2rlUg9zabGH1AWlZyENU/TaCLXyM6FaIEmyRtxG9+WDLOr3lrtlwWdI16hnE7b1Zzv+52NnoS3FYfTkAqQ7cvDYx4Dktuexc87C0WBg4tOrqaBuoSomRix9dAEXA3LnB/oXTZDRAAAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02OSQrCQBBFz5J9pzRxQJcOW0HiAaTtVKQydIUeFGn67pJEMKv3XvEXlUO220OWyLdNVdmkLT0g3JxUjSjQsjcKhXzbeyDZQSi4RXGq9Mgrt6Q+Q04WhV1BOHrVoBuuP5vwH887CtWyLyvD2kE4k3WGHt4R62E57ygMe4ebFYRDgYpNOf4x2g1djENeZN+TfkahuUSo7eKVr2ELy6S2RKnx2lGHUEz8Au88dXP6AAAA"
    },
    "Metadata": {
     "aws:cdk:path": "website-stack/CDKMetadata/Default"
    },
    "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Mappings": {
+  "AWSCloudFrontPartitionHostedZoneIdMap": {
+   "aws": {
+    "zoneId": "Z2FDTNDATAQYW2"
+   },
+   "aws-cn": {
+    "zoneId": "Z3RFFRIM2A3IF5"
+   }
   }
  },
  "Conditions": {
