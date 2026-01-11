@@ -7,7 +7,7 @@ import {
 
 export const mainRoutes = [
   route("om-meg", "routes/about.tsx", { id: "Om meg" }),
-  route("tjenester", "routes/home.tsx", { id: "Tjenester" }),
+  route("tjenester", "routes/services.tsx", { id: "Tjenester" }),
   route("bildegalleri", "routes/home.tsx", { id: "Bildegalleri" }),
   route("kontakt", "routes/home.tsx", { id: "Kontakt" }),
 ] satisfies RouteConfig;
