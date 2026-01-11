@@ -9,7 +9,7 @@ export const mainRoutes = [
   route("om-meg", "routes/about.tsx", { id: "Om meg" }),
   route("tjenester", "routes/services.tsx", { id: "Tjenester" }),
   route("bildegalleri", "routes/home.tsx", { id: "Bildegalleri" }),
-  route("kontakt", "routes/home.tsx", { id: "Kontakt" }),
+  route("kontakt", "routes/contact.tsx", { id: "Kontakt" }),
 ] satisfies RouteConfig;
 
 export default [
