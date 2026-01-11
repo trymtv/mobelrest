@@ -6,7 +6,7 @@ export default function Footer() {
             <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-12">
                 <div className="space-y-4">
                     <div className="font-bold text-xl tracking-tight">
-                        MOBELREST
+                        TONE ERIKSEN MØBELRESTAURERING
                     </div>
                     <div className="text-brand-400 text-sm space-y-1">
                         <p>Tone Eriksen Møbelrestaurering</p>
@@ -29,7 +29,7 @@ export default function Footer() {
 
                     <div className="space-y-2 self-end md:self-start">
                         <p className="text-brand-400 text-sm">
-                            © {new Date().getFullYear()} Mobelrest. All rights reserved.
+                            © {new Date().getFullYear()} Tone Eriksen Møbelrestaurering. All rights reserved.
                         </p>
                     </div>
                 </div>

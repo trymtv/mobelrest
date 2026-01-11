@@ -2,8 +2,8 @@ import type { Route } from "./+types/contact";
 
 export function meta() {
     return [
-        { title: "Kontakt - Restaureringsverkstedet" },
-        { name: "description", content: "Kontakt oss for spørsmål eller pristilbud på restaurering av dine møbler." },
+        { title: "Kontakt - Tone Eriksen Møbelrestaurering" },
+        { name: "description", content: "Kontakt oss for møbelrestaurering" },
     ];
 }
 

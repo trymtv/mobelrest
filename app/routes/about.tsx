@@ -1,7 +1,7 @@
 export function meta() {
     return [
-        { title: "Om verkstedet - Restaureringsverkstedet" },
-        { name: "description", content: "Informasjon om restaureringsverkstedet på Nordstrand." },
+        { title: "Om Oss - Tone Eriksen Møbelrestaurering" },
+        { name: "description", content: "Lær mer om Tone Eriksen Møbelrestaurering" },
     ];
 }
 

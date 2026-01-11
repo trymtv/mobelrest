@@ -15,11 +15,11 @@ export default function Header() {
         <div className={"h-20 w-full max-w-6xl px-6 flex justify-between items-center"}>
           <NavLink to={"/"}>
             <div className={"font-bold text-2xl tracking-tight text-brand-800"}>
-              MOBEL<span className="text-brand-500">REST</span>
+              TONE ERIKSEN <span className="text-brand-500">MØBELRESTAURERING</span>
             </div>
           </NavLink>
           
-          {/* Desktop Navigation */}
+              {/* Desktop Navigation */}
           <nav className="hidden md:flex gap-8">
             <NavLinks />
           </nav>

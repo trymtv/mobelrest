@@ -3,8 +3,8 @@ import type { MetaFunction } from "react-router";
 
 export const meta: MetaFunction = () => {
     return [
-        { title: "Tjenester - Restaureringsverkstedet" },
-        { name: "description", content: "Oversikt over tjenester innen møbelrestaurering, intarsia og overflatebehandling." },
+        { title: "Tjenester - Tone Eriksen Møbelrestaurering" },
+        { name: "description", content: "Våre tjenester innen møbelrestaurering" },
     ];
 };
 
