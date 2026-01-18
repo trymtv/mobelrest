@@ -16,6 +16,7 @@ export default function Header() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const id = entry.target.id;
+          setActiveSection(id);
           const newPath = id === "hjem" ? "/" : `/#${id}`;
           if (window.location.pathname !== newPath || window.location.hash !== (id === "hjem" ? "" : `#${id}`)) {
             window.history.replaceState(null, "", newPath);
