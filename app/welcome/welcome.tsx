@@ -33,7 +33,18 @@ function ImageSlideshow() {
 }
 
 export function Welcome() {
-// Replace this with the actual address of the workshop
+  function nativeMapUrl(address): string {
+    const encodedAddress = encodeURIComponent(address);
+    const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+
+    if (isIOS) {
+      // Opens Apple Maps on iOS
+      return `maps://maps.apple.com/?q=${encodedAddress}`;
+    } else {
+      // Opens Google Maps on Android/Others
+      return `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+    }
+  }
   const workshopAddress = "Munkerudkleiva 9, 1164 Oslo";
   const encodedAddress = encodeURIComponent(workshopAddress);
   // Note: For a quick start without an API key, you can use the iframe share link from Google Maps:
@@ -68,29 +79,13 @@ export function Welcome() {
         </div>
         {/* Bottom Section: Contact & Map */}
         <div className="flex flex-col md:flex-row-reverse gap-12 items-center lg:justify-center">
-          {/* Right Column: Map (Visual focus) */}
-          <div className="w-full md:w-1/2">
-            <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden shadow-lg border border-stone-200">
-              <iframe
-                  title="Workshop Location"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0, filter: 'grayscale(0.1) contrast(1.05)' }}
-                  src={embedUrl}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-          </div>
-
           {/* Left Column: Text Content */}
           <div className="w-full md:w-1/2 lg:max-w-md">
             <h2 className="text-3xl font-serif font-bold mb-4 text-stone-800">
               Besøk verkstedet
             </h2>
             <p className="text-lg font-medium mb-6 text-stone-600">
-              Du finner meg i lyse lokaler sentralt plassert.
+              Du finner meg i tilgjengelige lokaler med bra med parkering.
             </p>
             <div className="space-y-4 text-stone-700 leading-relaxed mb-8">
               <p>
@@ -103,12 +98,12 @@ export function Welcome() {
             </div>
 
             <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`}
+                href={nativeMapUrl(workshopAddress)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-stone-800 text-stone-50 px-6 py-3 rounded-md font-medium hover:bg-stone-700 transition-colors shadow-sm"
             >
-              Få veibeskrivelse
+              Åpne veibeskrivelse 🔗
             </a>
           </div>
         </div>

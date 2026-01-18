@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import type { NavLinkProps } from "react-router";
 import { NavLink } from "react-router";
 
 export default function Header() {
@@ -37,14 +36,14 @@ export default function Header() {
             "w-full flex flex-col items-center grow-0 border-b border-brand-200 bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm"
           }
       >
-        <div className={"h-20 w-full max-w-6xl px-6 flex justify-between items-center"}>
+        <div className={"min-h-20 py-4 w-full max-w-6xl px-6 flex flex-col md:flex-row justify-between items-center gap-4"}>
           <NavLink to={"/"}>
-            <div className={"font-bold text-lg md:text-2xl tracking-tight text-brand-800"}>
+            <div className={"font-bold text-xl md:text-2xl tracking-tight text-brand-800 text-center md:text-left"}>
               TONE ERIKSEN <span className="text-brand-500">MØBELRESTAURERING</span>
             </div>
           </NavLink>
 
-          <nav className="flex gap-4 md:gap-8">
+          <nav className="flex gap-6 md:gap-8">
             <NavLinks activeSection={activeSection} />
           </nav>
         </div>
@@ -54,8 +53,8 @@ export default function Header() {
 
 const NavLinks = ({ activeSection }: { activeSection: string }): React.ReactElement[] => {
     const sections = [
-        { id: "om-oss", label: "Om Oss", href: "#om-oss" },
         { id: "tjenester", label: "Tjenester", href: "#tjenester" },
+        { id: "om-oss", label: "Om Oss", href: "#om-oss" },
         { id: "kontakt", label: "Kontakt", href: "#kontakt" },
     ];
 
@@ -90,4 +89,3 @@ const NavLinks = ({ activeSection }: { activeSection: string }): React.ReactElem
         </a>
     ));
 };
-// ... existing code ...
