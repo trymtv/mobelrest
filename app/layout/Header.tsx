@@ -4,14 +4,16 @@ import { NavLink } from "react-router";
 export default function Header() {
   const [activeSection, setActiveSection] = useState<string>("");
   const isScrollingRef = React.useRef(false);
+  const scrollTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const sections = ["hjem", "tjenester", "veibeskrivelse", "om-oss", "kontakt"];
     
-    // Listener to unlock the observer when smooth scroll ends
     const handleScrollEnd = () => {
       isScrollingRef.current = false;
     };
+
+    // scrollend has limited support, so we use it where available
     window.addEventListener("scrollend", handleScrollEnd);
 
     const observerOptions = {
@@ -51,6 +53,7 @@ export default function Header() {
       observer.disconnect();
       window.removeEventListener("hashchange", handleHashChange);
       window.removeEventListener("scrollend", handleScrollEnd);
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
     };
   }, []);
 
@@ -71,7 +74,8 @@ export default function Header() {
             <NavLinks 
                 activeSection={activeSection} 
                 setActiveSection={setActiveSection} 
-                isScrollingRef={isScrollingRef} 
+                isScrollingRef={isScrollingRef}
+                scrollTimeoutRef={scrollTimeoutRef}
             />
           </nav>
         </div>
@@ -82,11 +86,13 @@ export default function Header() {
 const NavLinks = ({
   activeSection,
   setActiveSection,
-  isScrollingRef
+  isScrollingRef,
+  scrollTimeoutRef
 }: {
   activeSection: string;
   setActiveSection: (id: string) => void;
   isScrollingRef: React.MutableRefObject<boolean>;
+  scrollTimeoutRef: React.MutableRefObject<ReturnType<typeof setTimeout> | null>;
 }): React.ReactElement[] => {
     const sections = [
         { id: "tjenester", label: "Tjenester", href: "#tjenester" },
@@ -105,12 +111,16 @@ const NavLinks = ({
                 onClick={(e) => {
                     if (section.href.startsWith("#")) {
                         e.preventDefault();
-                        
-                        // Force the element to lose focus to clear the iOS sticky hover state
                         (e.currentTarget as HTMLAnchorElement).blur();
                     
                         isScrollingRef.current = true;
                         setActiveSection(section.id);
+
+                        // Fallback for browsers (like older iOS Safari) that don't support 'scrollend'
+                        if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+                        scrollTimeoutRef.current = setTimeout(() => {
+                            isScrollingRef.current = false;
+                        }, 1000); // Typical smooth scroll duration safety
                     
                         const element = document.getElementById(section.id);
                     if (element) {
