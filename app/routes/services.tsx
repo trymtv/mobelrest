@@ -44,8 +44,7 @@ const images = [
                         </ul>
                     </div>
 
-                    {/* Right side: 2x2 Image Grid */}
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-4 gap-4">
                         {images.slice(0, 4).map((img, index) => (
                             <div
                                 key={index}
