@@ -3,16 +3,27 @@ import { NavLink } from "react-router";
 
 export default function Header() {
   const [activeSection, setActiveSection] = useState<string>("");
+  const isScrollingRef = React.useRef(false);
 
   useEffect(() => {
-    const sections = ["hjem", "om-oss", "tjenester", "kontakt"];
+    const sections = ["hjem", "tjenester", "om-oss", "kontakt"];
+    
+    // Listener to unlock the observer when smooth scroll ends
+    const handleScrollEnd = () => {
+      isScrollingRef.current = false;
+    };
+    window.addEventListener("scrollend", handleScrollEnd);
+
     const observerOptions = {
       root: null,
-      rootMargin: '-25% 0px -60% 0px', // Adjusts when the section is considered "active"
+      rootMargin: '-40% 0px -40% 0px',
       threshold: 0,
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      // If we are currently scrolling via a link click, ignore observer updates
+      if (isScrollingRef.current) return;
+
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const id = entry.target.id;
@@ -28,7 +39,6 @@ export default function Header() {
       if (element) observer.observe(element);
     });
 
-    // Sync state if hash changes (e.g., browser back button)
     const handleHashChange = () => {
       const hash = window.location.hash.replace("#", "");
       if (hash) setActiveSection(hash);
@@ -38,6 +48,7 @@ export default function Header() {
     return () => {
       observer.disconnect();
       window.removeEventListener("hashchange", handleHashChange);
+      window.removeEventListener("scrollend", handleScrollEnd);
     };
   }, []);
 
@@ -55,7 +66,11 @@ export default function Header() {
           </NavLink>
 
           <nav className="flex gap-6 md:gap-8">
-            <NavLinks activeSection={activeSection} setActiveSection={setActiveSection} />
+            <NavLinks 
+                activeSection={activeSection} 
+                setActiveSection={setActiveSection} 
+                isScrollingRef={isScrollingRef} 
+            />
           </nav>
         </div>
       </header>
@@ -64,10 +79,12 @@ export default function Header() {
 
 const NavLinks = ({
   activeSection,
-  setActiveSection
+  setActiveSection,
+  isScrollingRef
 }: {
   activeSection: string;
   setActiveSection: (id: string) => void;
+  isScrollingRef: React.MutableRefObject<boolean>;
 }): React.ReactElement[] => {
     const sections = [
         { id: "tjenester", label: "Tjenester", href: "#tjenester" },
@@ -85,23 +102,29 @@ const NavLinks = ({
             onClick={(e) => {
                 if (section.href.startsWith("#")) {
                     e.preventDefault();
-                    setActiveSection(section.id); // Update highlighting immediately
+                    
+                    isScrollingRef.current = true;
+                    setActiveSection(section.id);
+                    
                     const element = document.getElementById(section.id);
                     if (element) {
-                            const offset = 80; // Header height
+                        const offset = 80;
                         const bodyRect = document.body.getBoundingClientRect().top;
                         const elementRect = element.getBoundingClientRect().top;
                         const elementPosition = elementRect - bodyRect;
                         const offsetPosition = elementPosition - offset;
 
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: "smooth"
-                        });
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: "smooth"
+                            });
+                            
+                            // No timeout needed! The 'scrollend' listener in useEffect 
+                            // will set isScrollingRef.current = false for us.
+                        }
+                        window.history.pushState(null, "", `/#${section.id}`);
                     }
-                    window.history.pushState(null, "", `/#${section.id}`);
-                }
-            }}
+                }}
         >
             {section.label}
         </a>
