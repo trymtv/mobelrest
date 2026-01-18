@@ -28,7 +28,9 @@ export default function Header() {
         if (entry.isIntersecting) {
           const id = entry.target.id;
           setActiveSection(id);
-          }
+          // Update the URL hash without jumping the page
+          window.history.replaceState(null, "", `#${id}`);
+        }
       });
     };
 
