@@ -20,7 +20,7 @@ function About() {
                     </h1>
                     <div className="space-y-6 text-stone-700 leading-relaxed">
                         <p className="text-lg">
-                            Restaureringsverkstedet ligger på Nordstrand i Oslo, tilknyttet Nordstrand håndverksenter med bl.a møbeltapetserer Anne Vasstveit og Oslo Møbelsnekkeri AS.
+                            Restaureringsverkstedet ligger på Nordstrand i Oslo.
                         </p>
                         <p>
                             Verkstedet ble etablert i -96 etter endt restaureringseksamen ved Carl Malmsten skola i Stockholm og praksis i Paris. Tidligere utdannet og praktisert som møbelsnekker (svennebrev -87/ mesterbrev -93).
