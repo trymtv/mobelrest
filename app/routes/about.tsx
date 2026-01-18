@@ -5,11 +5,7 @@ export function meta() {
     ];
 }
 
-export default function AboutRoute() {
-    return <About />;
-}
-
-function About() {
+export default function About() {
     return (
         <main className="container mx-auto px-4 py-12">
             <div className="flex flex-col md:flex-row gap-12 items-center lg:justify-center">

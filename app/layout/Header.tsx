@@ -6,7 +6,7 @@ export default function Header() {
   const isScrollingRef = React.useRef(false);
 
   useEffect(() => {
-    const sections = ["hjem", "tjenester", "om-oss", "kontakt"];
+    const sections = ["hjem", "tjenester", "veibeskrivelse", "om-oss", "kontakt"];
     
     // Listener to unlock the observer when smooth scroll ends
     const handleScrollEnd = () => {
@@ -17,7 +17,7 @@ export default function Header() {
     const observerOptions = {
       root: null,
       rootMargin: '-40% 0px -40% 0px',
-      threshold: 0,
+      threshold: 0.1,
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
@@ -90,6 +90,7 @@ const NavLinks = ({
 }): React.ReactElement[] => {
     const sections = [
         { id: "tjenester", label: "Tjenester", href: "#tjenester" },
+        { id: "veibeskrivelse", label: "Veibeskrivelse", href: "#veibeskrivelse" },
         { id: "om-oss", label: "Om Oss", href: "#om-oss" },
         { id: "kontakt", label: "Kontakt", href: "#kontakt" },
     ];

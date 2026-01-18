@@ -1,5 +1,5 @@
 // React Router generated types for route:
-// routes/home.tsx
+// routes/index.tsx
 
 import type * as T from "react-router/route-module"
 

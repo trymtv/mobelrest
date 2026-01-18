@@ -6,8 +6,8 @@ import {
 
 export default [
   layout("layout/index.tsx", [
-      index("routes/home.tsx"),
-      route("*", "routes/home.tsx", {
+      index("routes/index.tsx"),
+      route("*", "routes/index.tsx", {
         id: "not-found",
       })
   ]),
