@@ -5,28 +5,22 @@ import Services from "./services"; // Export the inner component from services.t
 import Contact from "./contact"; // Export the inner component from contact.tsx
 
 export default function Home() {
-    const sectionRefs = {
-        hjem: useRef<HTMLElement | null>(null),
-        "om-oss": useRef<HTMLElement | null>(null),
-        tjenester: useRef<HTMLElement | null>(null),
-        kontakt: useRef<HTMLElement | null>(null),
-    };
 
     return (
         <div className="flex flex-col">
-            <section id="hjem" ref={sectionRefs.hjem} className="min-h-screen">
+            <section id="hjem" className="min-h-screen">
                 <Welcome/>
             </section>
 
-            <section id="tjenester" ref={sectionRefs.tjenester} className="py-20 bg-stone-50">
+            <section id="tjenester" className="py-20 bg-stone-50">
                 <Services/>
             </section>
 
-            <section id="om-oss" ref={sectionRefs["om-oss"]} className="py-20 border-t border-stone-100">
+            <section id="om-oss" className="py-20 border-t border-stone-100">
                 <About/>
             </section>
 
-            <section id="kontakt" ref={sectionRefs.kontakt} className="py-20">
+            <section id="kontakt" className="py-20">
                 <Contact/>
             </section>
         </div>
