@@ -78,7 +78,7 @@ export function Welcome() {
           </div>
         </div>
         {/* Bottom Section: Contact & Map */}
-        <div className="flex flex-col md:flex-row-reverse gap-12 items-center lg:justify-center">
+        <div className="flex flex-col md:flex-row gap-12 items-center lg:justify-center">
           {/* Left Column: Text Content */}
           <div className="w-full md:w-1/2 lg:max-w-md">
             <h2 className="text-3xl font-serif font-bold mb-4 text-stone-800">
@@ -105,6 +105,17 @@ export function Welcome() {
             >
               Åpne veibeskrivelse 🔗
             </a>
+          </div>
+
+          {/* Right Column: Workshop Image */}
+          <div className="w-full md:w-1/2">
+            <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-lg shadow-lg">
+              <img
+                  src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=800&auto=format&fit=crop"
+                  alt="Interiør fra verkstedet"
+                  className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </main>
