@@ -18,14 +18,14 @@ export default function Header() {
               TONE ERIKSEN <span className="text-brand-500">MØBELRESTAURERING</span>
             </div>
           </NavLink>
-          
+
               {/* Desktop Navigation */}
           <nav className="hidden md:flex gap-8">
             <NavLinks />
           </nav>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="md:hidden p-2 text-brand-800"
             onClick={() => setIsOpen(!isOpen)}
           >
@@ -50,9 +50,29 @@ export default function Header() {
 }
 
 const NavLinks = (): React.ReactElement[] => {
-  return mainRoutes.map((route) => (
-    <MainLinkButton to={route.path!!} text={route.id!!} />
-  ));
+    const sections = [
+        { id: "hjem", label: "Hjem", href: "#" },
+        { id: "om-oss", label: "Om Oss", href: "#om-oss" },
+        { id: "tjenester", label: "Tjenester", href: "#tjenester" },
+        { id: "kontakt", label: "Kontakt", href: "#kontakt" },
+    ];
+
+    return sections.map((section) => (
+        <a
+            key={section.id}
+            href={section.href}
+            className="text-sm font-medium transition-colors hover:text-brand-600 text-brand-500"
+            onClick={(e) => {
+                if (section.href.startsWith("#")) {
+                    e.preventDefault();
+                    document.getElementById(section.id.replace("#", ""))?.scrollIntoView({ behavior: "smooth" });
+                    window.history.pushState(null, "", `/${section.id}`);
+                }
+            }}
+        >
+            {section.label}
+        </a>
+    ));
 };
 
 type LinkButtonProps = {

@@ -16,6 +16,10 @@
   --color-brand-50: #fafafa;
 }
 
+html {
+   scroll-behavior: smooth;
+ }
+
 html,
 body {
   @apply bg-brand-50 text-brand-900 antialiased;
