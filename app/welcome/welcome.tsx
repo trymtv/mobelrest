@@ -94,7 +94,7 @@ export function Welcome() {
             </p>
             <div className="space-y-4 text-stone-700 leading-relaxed mb-8">
               <p>
-                  Verkstedet er åpent fra mandag til fredag kl. 08:30 til 16:30, eller etter avtale. Ta gjerne <a href={"/kontakt"}><u>kontakt</u></a> for å avtale et tidspunkt for befaring av dine møbler.
+                  Verkstedet er åpent fra mandag til fredag kl. 08:30 til 16:30, eller etter avtale. Ta gjerne <a href={"#kontakt"}><u>kontakt</u></a> for å avtale et tidspunkt for befaring av dine møbler.
               </p>
               <div className="pt-2">
                 <p className="font-bold text-stone-800">Adresse:</p>
