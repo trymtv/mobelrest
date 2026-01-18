@@ -5,7 +5,7 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState<string>("");
 
   useEffect(() => {
-    const sections = ["om-oss", "tjenester", "kontakt"];
+    const sections = ["hjem", "om-oss", "tjenester", "kontakt"];
     const observerOptions = {
       root: null,
       rootMargin: '-20% 0px -70% 0px', // Adjusts when the section is considered "active"
@@ -15,7 +15,11 @@ export default function Header() {
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+          const id = entry.target.id;
+          const newPath = id === "hjem" ? "/" : `/#${id}`;
+          if (window.location.pathname !== newPath || window.location.hash !== (id === "hjem" ? "" : `#${id}`)) {
+            window.history.replaceState(null, "", newPath);
+          }
         }
       });
     };
