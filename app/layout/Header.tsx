@@ -102,14 +102,17 @@ const NavLinks = ({
             className={`text-xs md:text-sm font-medium transition-colors hover:text-brand-600 ${
                 activeSection === section.id ? "text-brand-800 border-b-2 border-brand-800" : "text-brand-500"
             }`}
-            onClick={(e) => {
-                if (section.href.startsWith("#")) {
-                    e.preventDefault();
+                onClick={(e) => {
+                    if (section.href.startsWith("#")) {
+                        e.preventDefault();
+                        
+                        // Force the element to lose focus to clear the iOS sticky hover state
+                        (e.currentTarget as HTMLAnchorElement).blur();
                     
-                    isScrollingRef.current = true;
-                    setActiveSection(section.id);
+                        isScrollingRef.current = true;
+                        setActiveSection(section.id);
                     
-                    const element = document.getElementById(section.id);
+                        const element = document.getElementById(section.id);
                     if (element) {
                         const offset = 80;
                         const bodyRect = document.body.getBoundingClientRect().top;

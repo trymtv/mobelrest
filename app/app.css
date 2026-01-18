@@ -40,3 +40,17 @@ html,
 body {
   @apply bg-brand-50 text-brand-900 antialiased;
 }
+
+@layer base {
+  a, button {
+    /* Removes the gray tap box on iOS */
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Optional: Only allow the hover color change on devices with a mouse */
+@media (hover: hover) {
+  .hover\:text-brand-600:hover {
+    @apply text-brand-600;
+  }
+}
