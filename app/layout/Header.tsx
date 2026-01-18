@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import type { NavLinkProps } from "react-router";
 import { NavLink } from "react-router";
-import { mainRoutes } from "~/routes";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,7 +50,6 @@ export default function Header() {
 
 const NavLinks = (): React.ReactElement[] => {
     const sections = [
-        { id: "hjem", label: "Hjem", href: "#" },
         { id: "om-oss", label: "Om Oss", href: "#om-oss" },
         { id: "tjenester", label: "Tjenester", href: "#tjenester" },
         { id: "kontakt", label: "Kontakt", href: "#kontakt" },
