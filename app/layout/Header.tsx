@@ -8,7 +8,7 @@ export default function Header() {
     const sections = ["hjem", "om-oss", "tjenester", "kontakt"];
     const observerOptions = {
       root: null,
-      rootMargin: '-20% 0px -70% 0px', // Adjusts when the section is considered "active"
+      rootMargin: '-25% 0px -60% 0px', // Adjusts when the section is considered "active"
       threshold: 0,
     };
 
@@ -17,11 +17,7 @@ export default function Header() {
         if (entry.isIntersecting) {
           const id = entry.target.id;
           setActiveSection(id);
-          const newPath = id === "hjem" ? "/" : `/#${id}`;
-          if (window.location.pathname !== newPath || window.location.hash !== (id === "hjem" ? "" : `#${id}`)) {
-            window.history.replaceState(null, "", newPath);
           }
-        }
       });
     };
 
@@ -32,7 +28,17 @@ export default function Header() {
       if (element) observer.observe(element);
     });
 
-    return () => observer.disconnect();
+    // Sync state if hash changes (e.g., browser back button)
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash) setActiveSection(hash);
+    };
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("hashchange", handleHashChange);
+    };
   }, []);
 
   return (
@@ -49,14 +55,20 @@ export default function Header() {
           </NavLink>
 
           <nav className="flex gap-6 md:gap-8">
-            <NavLinks activeSection={activeSection} />
+            <NavLinks activeSection={activeSection} setActiveSection={setActiveSection} />
           </nav>
         </div>
       </header>
   );
 }
 
-const NavLinks = ({ activeSection }: { activeSection: string }): React.ReactElement[] => {
+const NavLinks = ({
+  activeSection,
+  setActiveSection
+}: {
+  activeSection: string;
+  setActiveSection: (id: string) => void;
+}): React.ReactElement[] => {
     const sections = [
         { id: "tjenester", label: "Tjenester", href: "#tjenester" },
         { id: "om-oss", label: "Om Oss", href: "#om-oss" },
@@ -73,9 +85,10 @@ const NavLinks = ({ activeSection }: { activeSection: string }): React.ReactElem
             onClick={(e) => {
                 if (section.href.startsWith("#")) {
                     e.preventDefault();
+                    setActiveSection(section.id); // Update highlighting immediately
                     const element = document.getElementById(section.id);
                     if (element) {
-                        const offset = 80; // Header height
+                            const offset = 80; // Header height
                         const bodyRect = document.body.getBoundingClientRect().top;
                         const elementRect = element.getBoundingClientRect().top;
                         const elementPosition = elementRect - bodyRect;
