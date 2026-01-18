@@ -40,9 +40,3 @@ html,
 body {
   @apply bg-brand-50 text-brand-900 antialiased;
 }
-
-@media (hover: none) {
-  .hover\:text-brand-600:hover {
-    color: inherit;
-  }
-}
