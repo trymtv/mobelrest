@@ -99,9 +99,11 @@ const NavLinks = ({
         <a
             key={section.id}
             href={section.href}
-            className={`text-xs md:text-sm font-medium transition-colors hover:text-brand-600 ${
-                activeSection === section.id ? "text-brand-800 border-b-2 border-brand-800" : "text-brand-500"
-            }`}
+            className={`text-xs md:text-sm font-medium transition-colors ${
+                    activeSection === section.id 
+                        ? "text-brand-800 border-b-2 border-brand-800" 
+                        : "text-brand-500 @media(hover:hover){hover:text-brand-600}"
+                }`}
             onClick={(e) => {
                 if (section.href.startsWith("#")) {
                     e.preventDefault();
