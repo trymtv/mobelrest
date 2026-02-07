@@ -18,10 +18,10 @@ export default function Directions() {
                 {/* Left Column: Text Content */}
                 <div className="w-full md:w-1/2 lg:max-w-md">
                     <h2 className="text-3xl font-serif font-bold mb-6 text-stone-800 uppercase tracking-wide">
-                        Besøk verkstedet
+                        Veibeskrivelse
                     </h2>
                     <p className="text-lg font-medium mb-6 text-stone-600">
-                        Du finner meg i tilgjengelige lokaler med bra med parkering på Nordstrand.
+                        Du finner meg i tilgjengelige lokaler med gode parkeringsmuligheter.
                     </p>
                     <div className="space-y-4 text-stone-700 leading-relaxed mb-8">
                         <p>
