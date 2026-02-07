@@ -63,7 +63,7 @@ export default function About() {
                             </ul>
                         </DropdownSection>
 
-                        <DropdownSection title="Diverse kurs">
+                        <DropdownSection title="Fullførte kurs">
                             <ul className="list-disc pl-5 space-y-2">
                                 <li>Restaureringskurs ved Nääs handverkscentrum (Folkeuniversitetet i Sverige) 1988 og 1992</li>
                                 <li>Intarsiakurs ved professor Pierre Ramond fra Ecole Boulle, Paris sommeren 1995</li>
