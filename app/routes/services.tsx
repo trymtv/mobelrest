@@ -4,7 +4,7 @@ import type { MetaFunction } from "react-router";
 export const meta: MetaFunction = () => {
     return [
         { title: "Tjenester - Tone Eriksen Møbelrestaurering" },
-        { name: "description", content: "Våre tjenester innen møbelrestaurering" },
+        { name: "description", content: "Mine tjenester innen møbelrestaurering" },
     ];
 };
 
@@ -27,7 +27,7 @@ const images = [
                             Tjenester
                         </h1>
                         <p className="text-lg font-medium mb-6 text-stone-600">
-                            Vi tilbyr et bredt spekter av tjenester innen restaurering og vedlikehold av møbler.
+                            Jeg tilbyr et bredt spekter av tjenester innen restaurering og vedlikehold av møbler.
                         </p>
                         <ul className="space-y-4 text-stone-700 leading-relaxed">
                             <li className="flex gap-3">

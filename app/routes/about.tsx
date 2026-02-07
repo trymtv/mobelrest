@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export function meta() {
     return [
-        { title: "Om Oss - Tone Eriksen Møbelrestaurering" },
+        { title: "Om meg - Tone Eriksen Møbelrestaurering" },
         { name: "description", content: "Lær mer om Tone Eriksen Møbelrestaurering" },
     ];
 }
