@@ -18,13 +18,16 @@ const images = [
     export default function TjenesterRoute() {
         return (
             <main className="container mx-auto px-4 py-12">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+                <div className="flex flex-col md:flex-row gap-12 items-center lg:justify-center">
                     {/* Left side: Text content */}
-                    <div className="py-4">
-                        <h1 className="text-3xl font-serif font-bold mb-8 text-stone-800 uppercase tracking-wide">
+                    <div className="w-full md:w-1/2 lg:max-w-md">
+                        <h1 className="text-3xl font-serif font-bold mb-6 text-stone-800 uppercase tracking-wide">
                             Tjenester
                         </h1>
-                        <ul className="space-y-4 text-stone-700 leading-relaxed text-lg">
+                        <p className="text-lg font-medium mb-6 text-stone-600">
+                            Vi tilbyr et bredt spekter av tjenester innen restaurering og vedlikehold av møbler.
+                        </p>
+                        <ul className="space-y-4 text-stone-700 leading-relaxed">
                             <li className="flex gap-3">
                                 <span className="text-stone-400">•</span>
                                 <span>Restaurering av finérte møbler, intarsia og andre innleggingsarbeider.</span>
@@ -43,20 +46,22 @@ const images = [
                             </li>
                         </ul>
                     </div>
-
-                    <div className="grid grid-cols-4 gap-4">
-                        {images.slice(0, 4).map((img, index) => (
-                            <div
-                                key={index}
-                                className="aspect-square overflow-hidden rounded-lg shadow-sm bg-stone-100"
-                            >
-                                <img
-                                    src={img.src}
-                                    alt={img.alt}
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
-                        ))}
+                    {/* Right side: Images */}
+                    <div className="w-full md:w-5/12">
+                        <div className="grid grid-cols-4 md:grid-cols-2 gap-2 md:gap-4">
+                            {images.slice(0, 4).map((img, index) => (
+                                <div
+                                    key={index}
+                                    className="aspect-square overflow-hidden rounded-lg shadow-lg bg-stone-100"
+                                >
+                                    <img
+                                        src={img.src}
+                                        alt={img.alt}
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </main>

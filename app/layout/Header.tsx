@@ -7,7 +7,7 @@ export default function Header() {
   const scrollTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const sections = ["hjem", "tjenester", "veibeskrivelse", "om-oss", "kontakt"];
+    const sections = ["hjem", "tjenester", "veibeskrivelse", "om-verkstedet", "kontakt"];
     
     const handleScrollEnd = () => {
       isScrollingRef.current = false;

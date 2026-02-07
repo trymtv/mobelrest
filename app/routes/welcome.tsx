@@ -41,9 +41,8 @@ export function Welcome() {
             <ImageSlideshow />
           </div>
 
-          {/* Right Column: Text Content */}
           <div className="w-full md:w-1/2 lg:max-w-md">
-            <h1 className="text-3xl font-serif font-bold mb-4 text-stone-800">
+            <h1 className="text-3xl font-serif font-bold mb-6 text-stone-800 uppercase tracking-wide">
               Restaurering av møbler
             </h1>
             <p className="text-lg font-medium mb-6 text-stone-600">

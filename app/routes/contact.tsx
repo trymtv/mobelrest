@@ -16,8 +16,11 @@ export default function Contact() {
                     <h1 className="text-3xl font-serif font-bold mb-6 text-stone-800 uppercase tracking-wide">
                         Kontakt
                     </h1>
+                    <p className="text-lg font-medium mb-6 text-stone-600">
+                        Ta kontakt for en uforpliktende samtale om ditt møbelprosjekt.
+                    </p>
                     <div className="space-y-6 text-stone-700 leading-relaxed">
-                        <p className="text-lg">
+                        <p>
                             Har du spørsmål om restaurering eller ønsker du et uforpliktende pristilbud for restaurering av dine møbler?
                         </p>
                         <p>

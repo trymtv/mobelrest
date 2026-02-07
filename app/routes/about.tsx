@@ -37,14 +37,14 @@ export default function About() {
         <main className="container mx-auto px-4 py-12">
             <div className="flex flex-col md:flex-row gap-12 items-start lg:justify-center">
                 {/* Left Column: Text Content */}
-                <div className="w-full md:w-1/2 lg:max-w-xl">
+                <div className="w-full md:w-1/2 lg:max-w-md">
                     <h1 className="text-3xl font-serif font-bold mb-6 text-stone-800 uppercase tracking-wide">
                         Om verkstedet
                     </h1>
+                    <p className="text-lg font-medium mb-6 text-stone-600">
+                        Restaureringsverksted sentralt på Nordstrand i Oslo med lang erfaring.
+                    </p>
                     <div className="space-y-6 text-stone-700 leading-relaxed mb-8">
-                        <p className="text-lg">
-                            Restaureringsverkstedet ligger på Nordstrand i Oslo.
-                        </p>
                         <p>
                             Siden april 1996 har jeg drevet Tone Eriksen Møbelrestaurering i Munkerudkleiva 9 på Nordstrand.
                         </p>

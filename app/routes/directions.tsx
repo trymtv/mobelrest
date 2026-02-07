@@ -17,11 +17,11 @@ export default function Directions() {
             <div className="flex flex-col md:flex-row gap-12 items-center lg:justify-center">
                 {/* Left Column: Text Content */}
                 <div className="w-full md:w-1/2 lg:max-w-md">
-                    <h2 className="text-3xl font-serif font-bold mb-4 text-stone-800">
+                    <h2 className="text-3xl font-serif font-bold mb-6 text-stone-800 uppercase tracking-wide">
                         Besøk verkstedet
                     </h2>
                     <p className="text-lg font-medium mb-6 text-stone-600">
-                        Du finner meg i tilgjengelige lokaler med bra med parkering.
+                        Du finner meg i tilgjengelige lokaler med bra med parkering på Nordstrand.
                     </p>
                     <div className="space-y-4 text-stone-700 leading-relaxed mb-8">
                         <p>
