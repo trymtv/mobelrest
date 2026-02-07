@@ -18,7 +18,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/58cae7da015d94114bcdc8d814d50e1429b7a5245338577713a00f7df58b422c.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/745022a06e16910b807dfeb6a2439c0e260581a0a73c17b27faff35aebb54c3b.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -68,6 +68,12 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "mobelrestimagesPolicyA18A2513"
+          }
+        ],
+        "/website-stack/cloudfront-content-distribution/Origin2/S3OriginAccessControl/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "cloudfrontcontentdistributionOrigin2S3OriginAccessControl68FD5348"
           }
         ],
         "/website-stack/cloudfront-content-distribution/Resource": [

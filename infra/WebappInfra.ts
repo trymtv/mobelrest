@@ -74,7 +74,7 @@ export class Webapp extends cdk.Stack {
             new cdk.aws_cloudfront_origins.S3StaticWebsiteOrigin(s3Bucket);
 
         const cloudfrontImagesOrigin =
-            new cdk.aws_cloudfront_origins.S3BucketOrigin(imagesBucket);
+            cdk.aws_cloudfront_origins.S3BucketOrigin.withOriginAccessControl(imagesBucket);
 
         const certificate = cdk.aws_certificatemanager.Certificate.fromCertificateArn(
             this,

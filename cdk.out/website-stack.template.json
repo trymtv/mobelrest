@@ -335,6 +335,50 @@
          ]
         }
        ]
+      },
+      {
+       "Action": "s3:GetObject",
+       "Condition": {
+        "StringEquals": {
+         "AWS:SourceArn": {
+          "Fn::Join": [
+           "",
+           [
+            "arn:",
+            {
+             "Ref": "AWS::Partition"
+            },
+            ":cloudfront::",
+            {
+             "Ref": "AWS::AccountId"
+            },
+            ":distribution/",
+            {
+             "Ref": "cloudfrontcontentdistribution5BFB9597"
+            }
+           ]
+          ]
+         }
+        }
+       },
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "cloudfront.amazonaws.com"
+       },
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          {
+           "Fn::GetAtt": [
+            "mobelrestimages25467186",
+            "Arn"
+           ]
+          },
+          "/*"
+         ]
+        ]
+       }
       }
      ],
      "Version": "2012-10-17"
@@ -342,6 +386,20 @@
    },
    "Metadata": {
     "aws:cdk:path": "website-stack/mobelrest-images/Policy/Resource"
+   }
+  },
+  "cloudfrontcontentdistributionOrigin2S3OriginAccessControl68FD5348": {
+   "Type": "AWS::CloudFront::OriginAccessControl",
+   "Properties": {
+    "OriginAccessControlConfig": {
+     "Name": "websitestackcloudfrontcontenOrigin2S3OriginAccessControlEA05443A",
+     "OriginAccessControlOriginType": "s3",
+     "SigningBehavior": "always",
+     "SigningProtocol": "sigv4"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "website-stack/cloudfront-content-distribution/Origin2/S3OriginAccessControl/Resource"
    }
   },
   "cloudfrontcontentdistribution5BFB9597": {
@@ -404,6 +462,12 @@
         ]
        },
        "Id": "websitestackcloudfrontcontentdistributionOrigin24A918074",
+       "OriginAccessControlId": {
+        "Fn::GetAtt": [
+         "cloudfrontcontentdistributionOrigin2S3OriginAccessControl68FD5348",
+         "Id"
+        ]
+       },
        "S3OriginConfig": {
         "OriginAccessIdentity": ""
        }
@@ -452,7 +516,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02Oyw6CMBBFv4V9GRXQvY+tiYEPMKUMZgA7pg+JafrvBjCR1TlncheTQZYXsEvkaFPV9OlANYTKSdWLEi17o1DI0d4DySeEkgcU51bPvPFA6jPlYlHYHMLJqx7ddP3Zgv943VGogX3TGtYOwoWsM1R7R6yn5bqjMOwd7nMIxxIVm2b+Y7YKXYxTXuXrRfoRheYGobObd1bAAbZJZ4lS47WjJ0K58AtIjq3s+gAAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/3WOQW7CMBBFz8LeGdqEdk9hi0DJASozGdAQ40EeG1RZvnuVBKlsunr/fc2Xpoa6WcH7wj60wn6oHB8hd9HiYFpSSQHJ2Id+Z7ZXyK04MpuTn3gQx/gz6pyK0QbyV8KB4tg+04y/41cvBp2k/hTER8hb1hj4mCKLN12zD3xmv0Yk1Y34GMSN+3/q13ExQVKkjwbyuiWU0E9PT6mjWMqoO3u7sT8X46UnuOjyXq/gE94WF2WuQvKRrwTtzF+KYGRuJwEAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "website-stack/CDKMetadata/Default"
