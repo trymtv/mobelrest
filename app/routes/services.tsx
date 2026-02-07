@@ -16,6 +16,8 @@ const images = [
 ];
 
     export default function TjenesterRoute() {
+        const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
+
         return (
             <main className="container mx-auto px-4 py-12">
                 <div className="flex flex-col md:flex-row gap-12 items-center lg:justify-center">
@@ -34,7 +36,7 @@ const images = [
                             </li>
                             <li className="flex gap-3">
                                 <span className="text-stone-400">•</span>
-                                <span>Trereparasjoner, komplimenteringer og konstruksjonsskader.</span>
+                                <span>Trereparasjoner, komplimenteringer og konstrusskader.</span>
                             </li>
                             <li className="flex gap-3">
                                 <span className="text-stone-400">•</span>
@@ -50,20 +52,47 @@ const images = [
                     <div className="w-full md:w-5/12">
                         <div className="grid grid-cols-4 md:grid-cols-2 gap-2 md:gap-4">
                             {images.slice(0, 4).map((img, index) => (
-                                <div
+                                <button
                                     key={index}
-                                    className="aspect-square overflow-hidden rounded-lg shadow-lg bg-stone-100"
+                                    className="aspect-square overflow-hidden rounded-lg shadow-lg bg-stone-100 hover:opacity-90 transition-opacity cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-stone-400"
+                                    onClick={() => setSelectedImage(img)}
                                 >
                                     <img
                                         src={img.src}
                                         alt={img.alt}
                                         className="w-full h-full object-cover"
                                     />
-                                </div>
+                                </button>
                             ))}
                         </div>
                     </div>
                 </div>
+
+                {/* Modal for larger image view */}
+                {selectedImage && (
+                    <div
+                        className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 cursor-zoom-out"
+                        onClick={() => setSelectedImage(null)}
+                    >
+                        <div className="relative max-w-5xl w-full max-h-full flex items-center justify-center">
+                            <button
+                                className="absolute top-4 right-4 text-white text-3xl hover:text-stone-300 z-10 p-2"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setSelectedImage(null);
+                                }}
+                            >
+                                &times;
+                            </button>
+                            <img
+                                src={selectedImage.src}
+                                alt={selectedImage.alt}
+                                className="max-w-full max-h-[90vh] object-contain rounded-sm"
+                                onClick={(e) => e.stopPropagation()}
+                            />
+                        </div>
+                    </div>
+                )}
             </main>
         );
     }
