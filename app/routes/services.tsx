@@ -26,19 +26,19 @@ const images = [
                         </h1>
                         <ul className="space-y-4 text-stone-700 leading-relaxed text-lg">
                             <li className="flex gap-3">
-                                <span className="text-stone-400">—</span>
+                                <span className="text-stone-400">•</span>
                                 <span>Restaurering av finérte møbler, intarsia og andre innleggingsarbeider.</span>
                             </li>
                             <li className="flex gap-3">
-                                <span className="text-stone-400">—</span>
+                                <span className="text-stone-400">•</span>
                                 <span>Trereparasjoner, komplimenteringer og konstruksjonsskader.</span>
                             </li>
                             <li className="flex gap-3">
-                                <span className="text-stone-400">—</span>
+                                <span className="text-stone-400">•</span>
                                 <span>Ulike tradisjonelle overflatebhandlinger; transparent lakk, skjellakk (fransk polering), voksing mm.</span>
                             </li>
                             <li className="flex gap-3">
-                                <span className="text-stone-400">—</span>
+                                <span className="text-stone-400">•</span>
                                 <span>Samarbeider med møbeltapetserer, lakkerer, tredreier, treskjærer, forgyller, smed m.fl.</span>
                             </li>
                         </ul>
