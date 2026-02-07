@@ -18,7 +18,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/044ffab3f4e8595fc6ae47c0806a1bcd929d975a93317d3d7ec77f2bfe4780e0.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/8b9cec7cb9e524568af451807b9fb0e507585670c3422868464c88ede1450590.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -56,6 +56,18 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "s3bucketcontentPolicyB4F3669E"
+          }
+        ],
+        "/website-stack/s3-bucket-images/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "s3bucketimagesA5EB40EE"
+          }
+        ],
+        "/website-stack/s3-bucket-images/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "s3bucketimagesPolicyA8EEA756"
           }
         ],
         "/website-stack/cloudfront-content-distribution/Resource": [

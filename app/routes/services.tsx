@@ -9,10 +9,10 @@ export const meta: MetaFunction = () => {
 };
 
 const images = [
-    { src: "https://images.unsplash.com/photo-1581783898377-1c85bf937427?q=80&w=1200&auto=format&fit=crop", alt: "Restaurering detalj 1" },
-    { src: "https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=1200&auto=format&fit=crop", alt: "Trearbeid" },
-    { src: "https://images.unsplash.com/photo-1622325514515-5645671168f1?q=80&w=1200&auto=format&fit=crop", alt: "Verktøy og lakk" },
-    { src: "https://images.unsplash.com/photo-1590055531615-f16d36efe8ec?q=80&w=1200&auto=format&fit=crop", alt: "Møbeldetalj" },
+    { src: "/images/saws.jpeg", alt: "Sager" },
+    { src: "/images/files.jpeg", alt: "Files" },
+    { src: "/images/clamps.jpeg", alt: "Tvinger" },
+    { src: "/images/workbench.jpeg", alt: "Arbeidsbenk og tvinge" },
 ];
 
     export default function TjenesterRoute() {

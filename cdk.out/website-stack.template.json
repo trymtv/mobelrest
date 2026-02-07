@@ -96,6 +96,43 @@
        ]
       },
       {
+       "Action": [
+        "s3:GetObject*",
+        "s3:GetBucket*",
+        "s3:List*",
+        "s3:DeleteObject*",
+        "s3:PutObject",
+        "s3:PutObjectLegalHold",
+        "s3:PutObjectRetention",
+        "s3:PutObjectTagging",
+        "s3:PutObjectVersionTagging",
+        "s3:Abort*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "s3bucketimagesA5EB40EE",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "s3bucketimagesA5EB40EE",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
        "Action": "cloudfront:CreateInvalidation",
        "Effect": "Allow",
        "Resource": {
@@ -232,12 +269,96 @@
     "aws:cdk:path": "website-stack/s3-bucket-content/Policy/Resource"
    }
   },
+  "s3bucketimagesA5EB40EE": {
+   "Type": "AWS::S3::Bucket",
+   "Properties": {
+    "BucketEncryption": {
+     "ServerSideEncryptionConfiguration": [
+      {
+       "ServerSideEncryptionByDefault": {
+        "SSEAlgorithm": "AES256"
+       }
+      }
+     ]
+    },
+    "PublicAccessBlockConfiguration": {
+     "BlockPublicAcls": true,
+     "BlockPublicPolicy": true,
+     "IgnorePublicAcls": true,
+     "RestrictPublicBuckets": true
+    }
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "website-stack/s3-bucket-images/Resource"
+   }
+  },
+  "s3bucketimagesPolicyA8EEA756": {
+   "Type": "AWS::S3::BucketPolicy",
+   "Properties": {
+    "Bucket": {
+     "Ref": "s3bucketimagesA5EB40EE"
+    },
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "s3:*",
+       "Condition": {
+        "Bool": {
+         "aws:SecureTransport": "false"
+        }
+       },
+       "Effect": "Deny",
+       "Principal": {
+        "AWS": "*"
+       },
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "s3bucketimagesA5EB40EE",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "s3bucketimagesA5EB40EE",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "website-stack/s3-bucket-images/Policy/Resource"
+   }
+  },
   "cloudfrontcontentdistribution5BFB9597": {
    "Type": "AWS::CloudFront::Distribution",
    "Properties": {
     "DistributionConfig": {
      "Aliases": [
       "mobelrest.no"
+     ],
+     "CacheBehaviors": [
+      {
+       "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+       "Compress": true,
+       "PathPattern": "/images/*",
+       "TargetOriginId": "websitestackcloudfrontcontentdistributionOrigin24A918074",
+       "ViewerProtocolPolicy": "redirect-to-https"
+      }
      ],
      "DefaultCacheBehavior": {
       "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
@@ -274,14 +395,26 @@
         ]
        },
        "Id": "websitestackcloudfrontcontentdistributionOrigin1530C74DD"
+      },
+      {
+       "DomainName": {
+        "Fn::GetAtt": [
+         "s3bucketimagesA5EB40EE",
+         "RegionalDomainName"
+        ]
+       },
+       "Id": "websitestackcloudfrontcontentdistributionOrigin24A918074",
+       "S3OriginConfig": {
+        "OriginAccessIdentity": ""
+       }
       }
      ],
-     "PriceClass": "PriceClass_100",
      "ViewerCertificate": {
       "AcmCertificateArn": "arn:aws:acm:us-east-1:968382676337:certificate/d5917e7e-6f54-4ed1-afd0-f839e1d5fc97",
       "MinimumProtocolVersion": "TLSv1.2_2021",
       "SslSupportMethod": "sni-only"
-     }
+     },
+     "WebACLId": "arn:aws:wafv2:us-east-1:968382676337:global/webacl/CreatedByCloudFront-8ede77ed/50df18d9-f73c-4c25-9bb0-3d512d8ea0b0"
     }
    },
    "Metadata": {
