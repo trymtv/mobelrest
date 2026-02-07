@@ -61,8 +61,20 @@ export class Webapp extends cdk.Stack {
 
         s3Bucket.grantReadWrite(githubActionsRole);
 
+        const imagesBucket = new cdk.aws_s3.Bucket(this, "s3-bucket-images", {
+            encryption: cdk.aws_s3.BucketEncryption.S3_MANAGED,
+            enforceSSL: true,
+            removalPolicy: cdk.RemovalPolicy.RETAIN,
+            blockPublicAccess: cdk.aws_s3.BlockPublicAccess.BLOCK_ALL,
+        });
+
+        imagesBucket.grantReadWrite(githubActionsRole);
+
         const cloudfrontS3Origin =
             new cdk.aws_cloudfront_origins.S3StaticWebsiteOrigin(s3Bucket);
+
+        const cloudfrontImagesOrigin =
+            new cdk.aws_cloudfront_origins.S3BucketOrigin(imagesBucket);
 
         const certificate = cdk.aws_certificatemanager.Certificate.fromCertificateArn(
             this,
@@ -83,12 +95,19 @@ export class Webapp extends cdk.Stack {
             {
                 certificate: certificate,
                 domainNames: [domainName],
+                webAclId: 'arn:aws:wafv2:us-east-1:968382676337:global/webacl/CreatedByCloudFront-8ede77ed/50df18d9-f73c-4c25-9bb0-3d512d8ea0b0',
                 defaultBehavior: {
                     origin: cloudfrontS3Origin,
                     viewerProtocolPolicy: cdk.aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
                 },
+                additionalBehaviors: {
+                    '/images/*': {
+                        origin: cloudfrontImagesOrigin,
+                        viewerProtocolPolicy: cdk.aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+                        cachePolicy: cdk.aws_cloudfront.CachePolicy.CACHING_OPTIMIZED,
+                    },
+                },
                 defaultRootObject: "index.html",
-                priceClass: cdk.aws_cloudfront.PriceClass.PRICE_CLASS_100,
             }
         );
 
