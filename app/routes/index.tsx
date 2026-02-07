@@ -21,7 +21,7 @@ export default function Index() {
                 <Directions/>
             </section>
 
-            <section id="om-oss">
+            <section id="om-verkstedet">
                 <About/>
             </section>
 

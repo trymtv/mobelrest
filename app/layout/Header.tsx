@@ -97,7 +97,7 @@ const NavLinks = ({
     const sections = [
         { id: "tjenester", label: "Tjenester", href: "#tjenester" },
         { id: "veibeskrivelse", label: "Veibeskrivelse", href: "#veibeskrivelse" },
-        { id: "om-oss", label: "Om Oss", href: "#om-oss" },
+        { id: "om-verkstedet", label: "Om verkstedet", href: "#om-verkstedet" },
         { id: "kontakt", label: "Kontakt", href: "#kontakt" },
     ];
 

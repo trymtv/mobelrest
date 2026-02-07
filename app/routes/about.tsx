@@ -46,10 +46,7 @@ export default function About() {
                             Restaureringsverkstedet ligger på Nordstrand i Oslo.
                         </p>
                         <p>
-                            Verkstedet ble etablert i -96 etter endt restaureringseksamen ved Carl Malmsten skola i Stockholm og praksis i Paris. Tidligere utdannet og praktisert som møbelsnekker (svennebrev -87/ mesterbrev -93).
-                        </p>
-                        <p>
-                            Har siden april 1996 drevet Tone Eriksen Møbelrestaurering i Munkerudkleiva 9 på Nordstrand.
+                            Siden april 1996 har jeg drevet Tone Eriksen Møbelrestaurering i Munkerudkleiva 9 på Nordstrand.
                         </p>
                     </div>
 
