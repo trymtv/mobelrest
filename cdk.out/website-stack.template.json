@@ -112,7 +112,7 @@
        "Resource": [
         {
          "Fn::GetAtt": [
-          "s3bucketimagesA5EB40EE",
+          "mobelrestimages25467186",
           "Arn"
          ]
         },
@@ -122,7 +122,7 @@
           [
            {
             "Fn::GetAtt": [
-             "s3bucketimagesA5EB40EE",
+             "mobelrestimages25467186",
              "Arn"
             ]
            },
@@ -269,7 +269,7 @@
     "aws:cdk:path": "website-stack/s3-bucket-content/Policy/Resource"
    }
   },
-  "s3bucketimagesA5EB40EE": {
+  "mobelrestimages25467186": {
    "Type": "AWS::S3::Bucket",
    "Properties": {
     "BucketEncryption": {
@@ -291,14 +291,14 @@
    "UpdateReplacePolicy": "Retain",
    "DeletionPolicy": "Retain",
    "Metadata": {
-    "aws:cdk:path": "website-stack/s3-bucket-images/Resource"
+    "aws:cdk:path": "website-stack/mobelrest-images/Resource"
    }
   },
-  "s3bucketimagesPolicyA8EEA756": {
+  "mobelrestimagesPolicyA18A2513": {
    "Type": "AWS::S3::BucketPolicy",
    "Properties": {
     "Bucket": {
-     "Ref": "s3bucketimagesA5EB40EE"
+     "Ref": "mobelrestimages25467186"
     },
     "PolicyDocument": {
      "Statement": [
@@ -316,7 +316,7 @@
        "Resource": [
         {
          "Fn::GetAtt": [
-          "s3bucketimagesA5EB40EE",
+          "mobelrestimages25467186",
           "Arn"
          ]
         },
@@ -326,7 +326,7 @@
           [
            {
             "Fn::GetAtt": [
-             "s3bucketimagesA5EB40EE",
+             "mobelrestimages25467186",
              "Arn"
             ]
            },
@@ -341,7 +341,7 @@
     }
    },
    "Metadata": {
-    "aws:cdk:path": "website-stack/s3-bucket-images/Policy/Resource"
+    "aws:cdk:path": "website-stack/mobelrest-images/Policy/Resource"
    }
   },
   "cloudfrontcontentdistribution5BFB9597": {
@@ -399,7 +399,7 @@
       {
        "DomainName": {
         "Fn::GetAtt": [
-         "s3bucketimagesA5EB40EE",
+         "mobelrestimages25467186",
          "RegionalDomainName"
         ]
        },

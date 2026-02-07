@@ -61,7 +61,7 @@ export class Webapp extends cdk.Stack {
 
         s3Bucket.grantReadWrite(githubActionsRole);
 
-        const imagesBucket = new cdk.aws_s3.Bucket(this, "s3-bucket-images", {
+        const imagesBucket = new cdk.aws_s3.Bucket(this, "mobelrest-images", {
             encryption: cdk.aws_s3.BucketEncryption.S3_MANAGED,
             enforceSSL: true,
             removalPolicy: cdk.RemovalPolicy.RETAIN,
