@@ -36,7 +36,7 @@ const images = [
                             </li>
                             <li className="flex gap-3">
                                 <span className="text-stone-400">•</span>
-                                <span>Trereparasjoner, komplimenteringer og konstrusskader.</span>
+                                <span>Trereparasjoner, komplimenteringer og konstruksjonsskader.</span>
                             </li>
                             <li className="flex gap-3">
                                 <span className="text-stone-400">•</span>

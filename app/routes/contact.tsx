@@ -11,25 +11,7 @@ export default function Contact() {
     return (
         <main className="container mx-auto px-4 py-20">
             <div className="flex flex-col md:flex-row gap-12 items-start lg:justify-center">
-                {/* Left Column: Text Content */}
-                <div className="w-full md:w-1/2 lg:max-w-md">
-                    <h1 className="text-3xl font-serif font-bold mb-6 text-stone-800 uppercase tracking-wide">
-                        Kontakt
-                    </h1>
-                    <p className="text-lg font-medium mb-6 text-stone-600">
-                        Ta kontakt for en uforpliktende samtale om ditt møbelprosjekt.
-                    </p>
-                    <div className="space-y-6 text-stone-700 leading-relaxed">
-                        <p>
-                            Har du spørsmål om restaurering eller ønsker du et uforpliktende pristilbud for restaurering av dine møbler?
-                        </p>
-                        <p>
-                            Ta gjerne kontakt per telefon eller e-post for en hyggelig samtale om ditt prosjekt. Du er også velkommen til å sende bilder av møbelet for en første vurdering.
-                        </p>
-                    </div>
-                </div>
-
-                {/* Right Column: Contact Information Card */}
+                {/* left Column: Contact Information Card */}
                 <div className="w-full md:w-1/2 lg:max-w-md">
                     <div className="bg-stone-50 p-8 rounded-lg border border-stone-200 shadow-sm">
                         <h2 className="font-serif font-bold text-xl mb-6 text-stone-800 border-b border-stone-200 pb-4">
@@ -68,6 +50,24 @@ export default function Contact() {
                         </ul>
                     </div>
                 </div>
+                {/* right Column: Text Content */}
+                <div className="w-full md:w-1/2 lg:max-w-md">
+                    <h1 className="text-3xl font-serif font-bold mb-6 text-stone-800 uppercase tracking-wide">
+                        Kontakt
+                    </h1>
+                    <p className="text-lg font-medium mb-6 text-stone-600">
+                        Ta kontakt for en uforpliktende samtale om ditt møbelprosjekt.
+                    </p>
+                    <div className="space-y-6 text-stone-700 leading-relaxed">
+                        <p>
+                            Har du spørsmål om restaurering eller ønsker du et uforpliktende pristilbud for restaurering av dine møbler?
+                        </p>
+                        <p>
+                            Ta gjerne kontakt per telefon eller e-post for en hyggelig samtale om ditt prosjekt. Du er også velkommen til å sende bilder av møbelet for en første vurdering.
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </main>
     );
