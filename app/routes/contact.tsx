@@ -47,23 +47,23 @@ export default function Contact() {
                             </li>
 
                             <li className="flex items-start gap-4">
-                                <span className="text-xl" aria-hidden="true">📞</span>
-                                <div>
-                                    <p className="font-medium">Telefon:</p>
-                                    <a href="tel:92425720" className="hover:text-stone-900 transition-colors">
-                                        924 25 720
-                                    </a>
-                                </div>
+                                <a href="tel:92425720" className="flex items-start gap-4 w-full p-2 -m-2 rounded-md hover:bg-stone-100 hover:text-stone-900 transition-all duration-200">
+                                    <span className="text-xl" aria-hidden="true">📞</span>
+                                    <div>
+                                        <p className="font-medium text-stone-700">Telefon:</p>
+                                        <p>924 25 720</p>
+                                    </div>
+                                </a>
                             </li>
 
                             <li className="flex items-start gap-4">
-                                <span className="text-xl" aria-hidden="true">✉️</span>
-                                <div>
-                                    <p className="font-medium">E-post:</p>
-                                    <a href="mailto:tiltone@online.no" className="hover:text-stone-900 transition-colors break-all">
-                                        tiltone@online.no
-                                    </a>
-                                </div>
+                                <a href="mailto:tiltone@online.no" className="flex items-start gap-4 w-full p-2 -m-2 rounded-md hover:bg-stone-100 hover:text-stone-900 transition-all duration-200">
+                                    <span className="text-xl" aria-hidden="true">✉️</span>
+                                    <div>
+                                        <p className="font-medium text-stone-700">E-post:</p>
+                                        <p className="break-all">tiltone@online.no</p>
+                                    </div>
+                                </a>
                             </li>
                         </ul>
                     </div>
