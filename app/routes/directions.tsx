@@ -13,7 +13,7 @@ export default function Directions() {
     }
     const workshopAddress = "Munkerudkleiva 9, 1164 Oslo";
     return (
-        <main className="container mx-auto px-4 py-12 space-y-30">
+        <main className="container mx-auto px-4 py-20 space-y-30">
             <div className="flex flex-col md:flex-row gap-12 items-center lg:justify-center">
                 {/* Left Column: Text Content */}
                 <div className="w-full md:w-1/2 lg:max-w-md">
@@ -47,7 +47,7 @@ export default function Directions() {
                 <div className="w-full md:w-1/2">
                     <div className="relative w-full h-64 md:h-96 overflow-hidden rounded-lg shadow-lg">
                         <img
-                            src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=800&auto=format&fit=crop"
+                            src="/images/horse.jpeg"
                             alt="Interiør fra verkstedet"
                             className="absolute inset-0 w-full h-full object-cover"
                         />

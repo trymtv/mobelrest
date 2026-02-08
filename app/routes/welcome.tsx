@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 
 const images = [
-  "https://images.unsplash.com/photo-1581428982868-e410dd047a90?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1505691938895-1758d7eaa511?q=80&w=800&auto=format&fit=crop",
+  "/images/slideshow/round-table-1.jpg",
+  "/images/slideshow/round-table-2.jpg",
+  "/images/slideshow/table-1.jpg",
+  "/images/slideshow/table-2.jpg",
+  "/images/slideshow/chairs-1.jpg",
+  "/images/slideshow/chairs-2.jpg",
+  "/images/slideshow/busts.jpg",
 ];
 
 function ImageSlideshow() {
@@ -34,7 +38,7 @@ function ImageSlideshow() {
 
 export function Welcome() {
   return (
-      <main className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-4 py-20">
         <div className="flex flex-col md:flex-row gap-12 items-center lg:justify-center">
           {/* Left Column: Slideshow */}
           <div className="w-full md:w-1/2">

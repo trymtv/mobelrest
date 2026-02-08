@@ -11,7 +11,7 @@ export const meta: MetaFunction = () => {
 const images = [
     { src: "/images/saws.jpeg", alt: "Sager" },
     { src: "/images/files.jpeg", alt: "Files" },
-    { src: "/images/clamps.jpeg", alt: "Tvinger" },
+    { src: "/images/work.jpeg", alt: "Snekkerarbeid underveis" },
     { src: "/images/workbench.jpeg", alt: "Arbeidsbenk og tvinge" },
 ];
 
@@ -19,7 +19,7 @@ const images = [
         const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
 
         return (
-            <main className="container mx-auto px-4 py-12">
+            <main className="container mx-auto px-4 py-20">
                 <div className="flex flex-col md:flex-row gap-12 items-center lg:justify-center">
                     {/* Left side: Text content */}
                     <div className="w-full md:w-1/2 lg:max-w-md">

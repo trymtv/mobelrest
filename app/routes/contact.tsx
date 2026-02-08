@@ -9,7 +9,7 @@ export function meta() {
 
 export default function Contact() {
     return (
-        <main className="container mx-auto px-4 py-12">
+        <main className="container mx-auto px-4 py-20">
             <div className="flex flex-col md:flex-row gap-12 items-start lg:justify-center">
                 {/* Left Column: Text Content */}
                 <div className="w-full md:w-1/2 lg:max-w-md">
