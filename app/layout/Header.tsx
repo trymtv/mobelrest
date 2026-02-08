@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { NavLink } from "react-router";
+import logo from "../../images/mestermerket.png";
 
 export default function Header() {
   const [activeSection, setActiveSection] = useState<string>("");
@@ -64,7 +65,8 @@ export default function Header() {
           }
       >
         <div className={"min-h-20 py-4 w-full max-w-6xl px-6 flex flex-col md:flex-row justify-between items-center gap-4"}>
-          <NavLink to={"/"}>
+          <NavLink to={"/"} className="flex items-center gap-4">
+            <img src={logo} alt="Mestermerket" className="h-10 w-auto opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
             <div className={"font-bold text-xl md:text-2xl tracking-tight text-brand-800 text-center md:text-left"}>
               TONE ERIKSEN <span className="text-brand-500">MØBELRESTAURERING</span>
             </div>

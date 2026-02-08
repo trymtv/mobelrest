@@ -38,7 +38,7 @@ function ImageSlideshow() {
 
 export function Welcome() {
   return (
-      <main className="container mx-auto px-4 py-20">
+      <main className="container mx-auto px-4 pb-20 pt-12">
         <div className="flex flex-col md:flex-row gap-12 items-center lg:justify-center">
           {/* Left Column: Slideshow */}
           <div className="w-full md:w-1/2">

@@ -1,4 +1,5 @@
 import React from 'react'
+import logo from "../../images/mestermerket.png";
 
 export default function Footer() {
     return (
@@ -8,9 +9,12 @@ export default function Footer() {
                     <div className="font-bold text-xl tracking-tight">
                         TONE ERIKSEN MØBELRESTAURERING
                     </div>
-                    <div className="text-brand-400 text-sm space-y-1">
-                        <p>Tone Eriksen Møbelrestaurering</p>
-                        <p>Munkerudkleiva 9, 1164 Oslo</p>
+                    <div className="flex items-center gap-4">
+                        <img src={logo} alt="Mestermerket" className="h-16 w-auto brightness-0 invert" />
+                        <div className="text-brand-400 text-sm space-y-1">
+                            <p>Tone Eriksen Møbelrestaurering</p>
+                            <p>Munkerudkleiva 9, 1164 Oslo</p>
+                        </div>
                     </div>
                 </div>
 
